@@ -1,3 +1,0 @@
-nestedBlendedVelocityFvPatchVectorField.C
-
-LIB = $(FOAM_USER_LIBBIN)/libnestedBlendedVelocity

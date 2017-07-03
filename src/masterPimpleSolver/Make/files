@@ -1,4 +1,0 @@
-masterPimpleSolver.C
-
-LIB = $(FOAM_USER_LIBBIN)/libmasterPimpleSolver
-

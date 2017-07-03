@@ -1,4 +1,0 @@
-CnC.C
-CnCFunctionObject.C
-
-LIB = $(FOAM_USER_LIBBIN)/libCnC

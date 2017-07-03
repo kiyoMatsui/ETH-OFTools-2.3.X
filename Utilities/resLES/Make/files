@@ -1,3 +1,0 @@
-resLES.C
-
-EXE = $(FOAM_USER_APPBIN)/resLES
