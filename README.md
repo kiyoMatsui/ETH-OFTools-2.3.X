@@ -1,9 +1,13 @@
 # ETH-OFTools-2.3.X
 
-KM quickFix of Chair of Building Physics (ETH Zurich) addons for OpenFOAM-4.x.
+This fork has taken the filtered noise inflow generator from the Chair of Building Physics (ETH Zurich) addons for OpenFOAM-2.3.x and attempts to make it compatible with the latest OpenFOAM release.
+Compiles and passes basic tests on OpenFOAM-4.x.
+Compiles on OpenFOAM-6.x.
 
+Link to original project:
+https://github.com/ETH-BuildingPhysics/ETH-OFTools-2.3.X
 
-## Version: 1
+## Version: 
 
 
 ## Original Authors:
