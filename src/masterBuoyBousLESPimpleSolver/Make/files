@@ -1,4 +1,0 @@
-masterBuoyBousLESPimpleSolver.C
-
-LIB = $(FOAM_USER_LIBBIN)/libmasterBuoyBousLESPimpleSolver
-

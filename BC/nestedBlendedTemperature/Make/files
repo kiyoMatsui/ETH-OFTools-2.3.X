@@ -1,3 +1,0 @@
-nestedBlendedTemperatureFvPatchScalarField.C
-
-LIB = $(FOAM_USER_LIBBIN)/libnestedBlendedTemperature

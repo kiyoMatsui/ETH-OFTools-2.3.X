@@ -1,3 +1,0 @@
-TKEProd2D.C
-
-EXE = $(FOAM_USER_APPBIN)/TKEProd2D

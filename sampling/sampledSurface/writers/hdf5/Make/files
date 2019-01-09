@@ -1,3 +1,0 @@
-hdf5SurfaceWriter.C
-
-LIB = $(FOAM_USER_LIBBIN)/libhdf5sampling

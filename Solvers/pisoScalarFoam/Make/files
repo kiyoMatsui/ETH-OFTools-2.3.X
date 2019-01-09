@@ -1,3 +1,0 @@
-pisoScalarFoam.C
-
-EXE = $(FOAM_USER_APPBIN)/pisoScalarFoam

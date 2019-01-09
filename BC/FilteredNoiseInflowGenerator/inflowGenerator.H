@@ -45,7 +45,7 @@ SourceFiles
 #define inflowGenerator_H
 
 #include "fixedValueFvPatchFields.H"
-#include "DataEntry.H"
+#include "Function1.H"
 #include "List.H"
 #include "labelVector.H"
 #include "pointToPointPlanarInterpolation.H"
