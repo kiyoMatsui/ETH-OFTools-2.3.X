@@ -1,0 +1,15 @@
+#!/bin/bash
+source ~/OpenFOAM/OpenFOAM-4.0/etc/bashrc
+rm system/controlDict
+cp system/firstThis system/controlDict
+cartesianMesh
+sed -i 's/empty/wall/g' ./constant/polyMesh/boundary
+renumberMesh -overwrite
+decomposePar	
+mpirun -np 4 pimpleFoam -parallel > logInit
+rm system/controlDict
+cp system/thenThis system/controlDict
+mpirun -np 4 pimpleFoam -parallel > logRun
+reconstructPar
+rm system/controlDict
+cp system/firstThis system/controlDict

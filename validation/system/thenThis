@@ -1,0 +1,190 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.0                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+libs
+(
+    "libLEMOSinflowMod.so"
+    "libutilityFunctionObjects.so"
+);
+
+
+application     pimpleFoam;
+
+startFrom       latestTime;
+
+startTime       100;
+
+stopAt          endTime;
+
+endTime         400;
+
+deltaT          0.1;
+
+writeControl    runTime;
+//writeControl    adjustableRunTime; // bad for filtered noise
+
+writeInterval   400;
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  10;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   8;
+
+runTimeModifiable false;
+
+//adjustTimeStep  yes; // bad for filtered noise
+
+//maxCo           0.9; // bad for filtered noise
+      
+functions
+{
+//	faceObj1
+//	{
+//		type		faceSource;
+//		functionObjectLibs ("libfieldFunctionObjects.so");
+
+//		enabled		true;
+//		writeControl	timeStep;
+//		writeInterval  2500;
+
+		// Output to log&file (true) or to file only
+//		log		true;
+
+		// Output field values as well
+//		valueOutput	true;
+
+		// Type of source: patch/faceZone/sampledSurface
+//		source		sampledSurface;
+		//
+		//
+		// if patch or faceZone: name of patch or faceZone
+//		sourceName	headHeight;
+		
+//		surfaceFormat 	vtk;
+		//// if sampledSurface: dictionary with a sampledSurface
+		//// Note: will not sample surface fields.
+//		sampledSurfaceDict
+//		{
+			// Sampling on triSurface
+//			type		sampledTriSurfaceMesh;
+//			surface		lawsonPlot.stl;
+//			source		cells; // sample cells or boundaryFaces
+//			interpolate 	true;
+//		}
+		// Operation: areaAverage/sum/weightedAverage ...
+//		operation	areaNormalIntegrate; //"none", "sum", "average", weightedAverage", areaAverage" "areaIntegrate" "min" "max" "CoV" areaNormalAverage" "areaNormalIntegrate"
+//		fields
+//		(
+//			p
+//			U
+//		);
+//	}
+//    Q1
+  //  {
+    //    type            Q;
+      //  functionObjectLibs ("libutilityFunctionObjects.so");
+        //writeControl   outputTime;
+    //}
+    cuttingPlane
+    {
+        type            surfaces;
+        functionObjectLibs ("libsampling.so");
+		writeControl	adjustableRunTime;
+	    	writeInterval  0.4;
+
+        surfaceFormat   vtk;
+//        fields          ( U p );
+        fields          ( U );
+        interpolationScheme cellPoint;
+
+        surfaces
+        (
+            yNormal
+             {
+                type            cuttingPlane;
+                planeType       pointAndNormal;
+                pointAndNormalDict
+                {
+                    basePoint       (1 136 2.5);
+                    normalVector    (0 1 0);
+                }
+                interpolate     true;
+            }
+            zNormal
+             {
+                type            cuttingPlane;
+                planeType       pointAndNormal;
+                pointAndNormalDict
+                {
+                    basePoint       (0 0 2.5);
+                    normalVector    (0 0 1);
+                }
+                interpolate     true;
+            }
+        );
+    }
+    fieldAverage1
+    {
+        type            fieldAverage;
+        functionObjectLibs ("libfieldFunctionObjects.so");
+        enabled         true;
+        writeControl   outputTime;
+
+        fields
+        (
+            U
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            }
+
+            p
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            }
+        );
+    }
+//    probes
+//    {
+  //      type            probes;
+    //    libs            ("libsampling.so");
+      //  writeControl    timeStep;
+//        writeInterval   1;
+//
+  //      fields          ( U p );
+//
+  //      probeLocations
+    //    (
+      //      (0.1 0.1 2)
+//
+  //      );
+//
+  //  }
+}
+
+// ************************************************************************* //
+

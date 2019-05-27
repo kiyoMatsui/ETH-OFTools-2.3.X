@@ -1,0 +1,119 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                |
+| \\      /  F ield         | cfMesh: A library for mesh generation          | 
+|  \\    /   O peration     |                                                |
+|   \\  /    A nd           | Author: Franjo Juretic                         | 
+|    \\/     M anipulation  | E-mail: franjo.juretic@c-fields.com            |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version   2.0;
+    format    ascii;
+    class     dictionary;
+    location  "system";
+    object    meshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceFile "geometry.stl";
+
+maxCellSize 2;
+
+localRefinement
+{
+    "inlet.*|out.*"
+    {
+        cellSize 2;  
+	refinementThickness 1;
+    } 
+
+    "side.*"
+    {
+        cellSize 2;
+    }
+
+    "building.*"
+    {
+        cellSize 2;
+	refinementThickness 20;
+    }
+
+    "ground.*"
+    {
+        cellSize 2; 
+	refinementThickness 20;
+    }
+
+}
+objectRefinements
+{
+}
+
+
+surfaceMeshRefinement
+{
+}
+
+
+edgeMeshRefinement
+{
+}
+
+keepCellsIntersectingPatches
+{
+}
+
+boundaryLayers
+{
+}
+
+
+workflowControls
+{
+//stopAfter templateGeneration;
+//stopAfter surfaceTopology;
+//stopAfter surfaceProjection;
+stopAfter patchAssignment;
+//stopAfter edgeExtraction;
+//stopAfter boundaryLayerGeneration;
+//stopAfter meshOptimisation;
+//stopAfter boundaryLayerRefinement;
+
+//restartFromLatestStep 1;
+}
+
+renameBoundary
+{
+
+	defaultName walls;
+
+	defaultType wall;
+
+    newPatchNames
+    {
+        "building.*"
+        {
+            newName     building;
+            type        wall;
+        }
+
+        "ground.*"
+        {
+            newName     ground;
+            type     wall;
+        }
+        "inlet.*"
+        {
+            newName     inlet;
+            type     patch;
+        }
+        "out.*"
+        {
+            newName     outlet;
+            type     patch;
+        }
+    }
+}     
+// ************************************************************************* //

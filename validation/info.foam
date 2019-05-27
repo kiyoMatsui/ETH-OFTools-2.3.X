@@ -1,0 +1,68 @@
+...
+
+Mesh stats
+    points:           3056017
+    faces:            9015616
+    internal faces:   8863424
+    cells:            2979840
+    faces per cell:   6
+    boundary patches: 294
+    point zones:      0
+    face zones:       0
+    cell zones:       0
+
+Overall number of cells of each type:
+    hexahedra:     2979840
+    prisms:        0
+    wedges:        0
+    pyramids:      0
+    tet wedges:    0
+    tetrahedra:    0
+    polyhedra:     0
+
+Checking topology...
+    Boundary definition OK.
+ ***Total number of faces on empty patches is not divisible by the number of cells in the mesh. Hence this mesh is not 1D or 2D.
+    Cell to face addressing OK.
+    Point usage OK.
+    Upper triangular ordering OK.
+    Face vertices OK.
+    Topological cell zip-up check OK.
+    Face-face connectivity OK.
+    Number of regions: 1 (OK).
+
+...
+
+Checking geometry...
+    Overall domain bounding box (-0.5284199715 -0.4642150104 -0.1000000015) (464.4809875 272.8389893 192.1999969)
+    Mesh has 0 geometric (non-empty/wedge) directions (0 0 0)
+    Mesh has 0 solution (non-empty) directions (0 0 0)
+ ***Number of edges not aligned with or perpendicular to non-empty directions: 96663
+  <<Writing 76852 points on non-aligned edges to set nonAlignedEdges
+    Boundary openness (3.589702507e-16 -5.013639572e-15 2.654011774e-15) OK.
+    Max cell openness = 3.17427996e-16 OK.
+    Max aspect ratio = -1 OK.
+    Minimum face area = 2.745945807. Maximum face area = 6.276078033.  Face area magnitudes OK.
+    Min volume = 6.815858538. Max volume = 12.98649053.  Total volume = 24064424.84.  Cell volumes OK.
+    Mesh non-orthogonality Max: 13.3567311 average: 0.2852676374
+    Non-orthogonality check OK.
+    Face pyramids OK.
+    Max skewness = 0.2324034723 OK.
+    Coupled point location match (average 0) OK.
+    Face tets OK.
+    Min/max edge length = 1.531482275 2.65467335 OK.
+    All angles in faces OK.
+    Face flatness (1 = flat, 0 = butterfly) : min = 0.9930320799  average = 0.9999998034
+    All face flatness OK.
+    Cell determinant (wellposedness) : minimum: 0.9759150276 average: 7.771759911
+    Cell determinant check OK.
+    Concave cell check OK.
+    Face interpolation weight : minimum: 0.4272026378 average: 0.4992502068
+    Face interpolation weight check OK.
+    Face volume ratio : minimum: 0.7287445978 average: 0.9972659969
+    Face volume ratio check OK.
+
+Failed 1 mesh checks.
+
+End
+
